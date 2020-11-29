@@ -3,7 +3,7 @@ const express = require('express')
 const passport = require('passport')
 
 // const Comment = require('../models/comment')
-const Issue = require('../models/issue')
+const Product = require('../models/product')
 
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
@@ -15,55 +15,55 @@ const requireToken = passport.authenticate('bearer', { session: false })
 
 const router = express.Router()
 
-// Create Comment on Issue
+// Create Comment on product
 router.post('/comments', requireToken, (req, res, next) => {
   req.body.comment.owner = req.user.id
 
   const commentData = req.body.comment
 
-  const issueId = commentData.issueId
+  const productId = commentData.productId
 
-  Issue.findById(issueId)
+  Product.findById(productId)
     .then(handle404)
-    .then(issue => {
-      issue.comments.push(commentData)
-      return issue.save()
+    .then(product => {
+      product.comments.push(commentData)
+      return product.save()
     })
-    .then(issue => res.status(201).json({ issue }))
+    .then(product => res.status(201).json({ product }))
     .catch(next)
 })
 
-// Delete Comment on Issue
+// Delete Comment on product
 router.delete('/comments/:id', requireToken, (req, res, next) => {
   const commentId = req.params.id
-  const issueId = req.body.comment.issueId
+  const productId = req.body.comment.productId
 
-  Issue.findById(issueId)
+  Product.findById(productId)
     .then(handle404)
-    .then(issue => {
-      requireOwnership(req, issue)
-      issue.comments.id(commentId).remove()
+    .then(product => {
+      requireOwnership(req, product)
+      product.comments.id(commentId).remove()
 
-      return issue.save()
+      return product.save()
     })
     .then(() => res.sendStatus(204))
     .catch(next)
 })
 
-// Update Comment on Issue
+// Update Comment on product
 router.patch('/comments/:id', requireToken, (req, res, next) => {
   const commentId = req.params.id
   const commentData = req.body.comment
-  const issueId = commentData.issueId
+  const productId = commentData.productId
 
-  Issue.findById(issueId)
+  Product.findById(productId)
     .then(handle404)
-    .then(issue => {
-      requireOwnership(req, issue)
-      const comment = issue.comments.id(commentId)
+    .then(product => {
+      requireOwnership(req, product)
+      const comment = product.comments.id(commentId)
       comment.set(commentData)
 
-      return issue.save()
+      return product.save()
     })
     .then(() => res.sendStatus(204))
     .catch(next)
