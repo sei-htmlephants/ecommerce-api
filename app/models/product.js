@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const commentSchema = require('./comment')
 
 const productSchema = new mongoose.Schema({
   productName: {
@@ -31,7 +32,8 @@ const productSchema = new mongoose.Schema({
     type: String
     // will be image links?
     // take first image as profile, or make another catagory?
-  }
+  },
+  comments: [commentSchema]
 }, {
   timestamps: true
 })
