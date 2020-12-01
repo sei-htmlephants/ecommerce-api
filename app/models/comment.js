@@ -1,6 +1,9 @@
 'use strict'
 
 // requiring the mongoose library
+
+// add rating system
+
 const mongoose = require('mongoose')
 
 const commentSchema = new mongoose.Schema({
