@@ -14,7 +14,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/products', requireToken, (req, res, next) => {
+router.get('/products', (req, res, next) => {
   Product.find()
     .then(products => {
       return products.map(product => product.toObject())
