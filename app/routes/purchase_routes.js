@@ -25,7 +25,7 @@ router.post('/create-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'Camera Test'
+            name: 'Cart'
           },
           unit_amount: 2000
         },
