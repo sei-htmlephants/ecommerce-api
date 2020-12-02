@@ -1,3 +1,4 @@
+const stripe = require('stripe')('sk_test_soMKrvSYorSaEaLOwQVmQo27')
 const express = require('express')
 const passport = require('passport')
 
@@ -12,6 +13,8 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
 
 const router = express.Router()
+
+const YOUR_DOMAIN = 'http://http://localhost:7165/#/'
 
 // INDEX
 router.get('/purchases', requireToken, (req, res, next) => {
@@ -40,6 +43,28 @@ router.post('/purchases', requireToken, (req, res, next) => {
       res.status(201).json({ purchase: purchase.toObject() })
     })
     .catch(next)
+})
+
+router.post('/create-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: ''
+          },
+          unit_amount: 2000
+        },
+        quantity: 1
+      }
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}/index-purchases`,
+    cancel_url: `${YOUR_DOMAIN}/index-products`
+  })
+  res.json({ id: session.id })
 })
 
 // UPDATE
