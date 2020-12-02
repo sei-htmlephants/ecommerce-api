@@ -33,7 +33,7 @@ router.post('/create-session', async (req, res) => {
       }
     ],
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/index-purchases`,
+    success_url: `${YOUR_DOMAIN}/checkout-success`,
     cancel_url: `${YOUR_DOMAIN}/index-products`
   })
   res.json({ id: session.id })
