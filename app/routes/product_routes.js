@@ -24,7 +24,7 @@ router.get('/products', (req, res, next) => {
 })
 
 // SHOW
-router.get('/products/:id', requireToken, (req, res, next) => {
+router.get('/products/:id', (req, res, next) => {
   Product.findById(req.params.id)
     .then(handle404)
     .then(product => res.status(200).json({ product: product.toObject() }))
