@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 // Number for invoice price, customer = owner
 
 const purchaseSchema = new mongoose.Schema({
+  // purchaseProduct: [productSchema]
   purchaseProduct: {
     type: String,
     required: true
