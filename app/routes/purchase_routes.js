@@ -13,31 +13,31 @@ const requireToken = passport.authenticate('bearer', { session: false })
 
 const router = express.Router()
 
-const stripe = require('stripe')('sk_test_soMKrvSYorSaEaLOwQVmQo27')
-router.use(express.static('.'))
-const YOUR_DOMAIN = 'http://localhost:7165/#'
+// const stripe = require('stripe')('sk_test_soMKrvSYorSaEaLOwQVmQo27')
+// router.use(express.static('.'))
+// const YOUR_DOMAIN = 'http://localhost:7165/#'
 
-router.post('/create-session', async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: 'Cart'
-          },
-          unit_amount: 2000
-        },
-        quantity: 1
-      }
-    ],
-    mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/checkout-success`,
-    cancel_url: `${YOUR_DOMAIN}/index-products`
-  })
-  res.json({ id: session.id })
-})
+// router.post('/create-session', async (req, res) => {
+//   const session = await stripe.checkout.sessions.create({
+//     payment_method_types: ['card'],
+//     line_items: [
+//       {
+//         price_data: {
+//           currency: 'usd',
+//           product_data: {
+//             name: 'Cart'
+//           },
+//           unit_amount: 2000
+//         },
+//         quantity: 1
+//       }
+//     ],
+//     mode: 'payment',
+//     success_url: `${YOUR_DOMAIN}/checkout-success`,
+//     cancel_url: `${YOUR_DOMAIN}/index-products`
+//   })
+//   res.json({ id: session.id })
+// })
 
 // INDEX
 router.get('/purchases', requireToken, (req, res, next) => {
