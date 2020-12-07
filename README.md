@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">E-Commerce HTMLephants</h1>
 
-An E-Commerce API with user authenticatioin, product & purchase documents and authenticated access to updating/deleting products and purchase.
+An E-Commerce API with user authentication, product & purchase documents and authenticated access to updating/deleting products and purchase.
 
 ## Important Links
 
