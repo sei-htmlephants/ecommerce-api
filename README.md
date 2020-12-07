@@ -40,14 +40,18 @@ Only owners of issues and comments can edit or delete their respective creations
 #### Back-End
 
 - Node.js
-  - Express
+- Express
 - MongoDB
-  - Mongoose
-  - MongoDB Atlas
+- Mongoose
+- MongoDB Atlas
 
 ## Future Development
 
-- edit here
+- Setting reminders
+- Assigning Users
+- User Roles
+- Allowing certain users to tag any issue
+- Elegant UI for editing comments
 
 ## Entity Relationship Diagram
 
