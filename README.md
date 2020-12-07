@@ -21,6 +21,13 @@ Issue documents have subdocuments called comments. Anyone can attach a subdocume
 
 Only owners of issues and comments can edit or delete their respective creations. 
 
+## Routes
+
+- /GET
+- /POST
+- /DELETE
+- /UPDATE
+
 ## User Stories
 
 - A user should be able to login/signup
