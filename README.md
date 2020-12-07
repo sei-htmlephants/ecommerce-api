@@ -23,10 +23,20 @@ Only owners of issues and comments can edit or delete their respective creations
 
 ## Routes
 
-- /GET
-- /POST
-- /DELETE
-- /UPDATE
+- /GET purchases
+- /POST purchases
+- /DELETE purchases/:id
+- /PATCH purchases/:id
+
+- /GET products 
+- /POST products
+- /DELETE products/:id
+- /PATCH products/:id
+
+- /POST sign-up
+- /POST sign-in
+- /PATCH change-password
+- /DELETE sign-out
 
 ## User Stories
 
