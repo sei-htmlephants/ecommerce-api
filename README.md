@@ -53,3 +53,22 @@ The data is stored in a document database (MongoDB) due to it's relative simplic
 ## Entity Relationship Diagram
 
 [Planning ERD and Wireframe](https://imgur.com/a/sqmwFmF)
+
+### Routes
+
+| Request | URL             | Function                  |
+|---------|-----------------|---------------------------|
+| GET     | /purchases      | Index of all purchases    |
+| GET     | /purchases-user | Index of user's purchases |
+| GET     | /purchases/:id  | Show one purchase         |
+| POST    | /purchases      | Create purchase           |
+| PATCH   | /purchases/:id  | Update purchase           |
+| DELETE  | /purchases/:id  | Delete purchase           |
+
+| Request | URL             | Function                  |
+|---------|-----------------|---------------------------|
+| GET     | /products/      | Index of all products     |
+| GET     | /products/:id   | Show one product          |
+| POST    | /products/      | Create product            |
+| PATCH   | /products/:id   | Update product            |
+| DELETE  | /products/:id   | Delete product            |
