@@ -49,6 +49,22 @@ router.get('/purchases', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/purchases-user', requireToken, (req, res, next) => {
+  // console.log(req.user)
+  Purchase.find({'owner': req.user.id})
+    .then(handle404)
+    .then(purchases => {
+      return purchases.map(purchase => {
+        requireOwnership(req, purchase)
+        return purchase.toObject()
+      })
+    })
+    .then(purchases => {
+      res.status(200).json({ purchases: purchases })
+    })
+    .catch(next)
+})
+
 // SHOW
 router.get('/purchases/:id', requireToken, (req, res, next) => {
   Purchase.findById(req.params.id)
