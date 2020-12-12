@@ -1,53 +1,54 @@
-<h1 style="text-align: center;">E-Commerce HTMLephants</h1>
+# E-Commerce API by HTMLephants
 
-An E-Commerce API with user authenticatioin, product & purchase documents and authenticated access to updating/deleting products and purchase.
+An E-Commerce API with user authentication, and product & purchase resources. Some actions such as update/delete are restricted to owners of those resources. Comment resources are also available as subdocuments for products.
 
 ## Important Links
 
 - [Hosted Website Front-End](https://sei-htmlephants.github.io/react-ecommerce-client)
 - [Front-End Repo](https://github.com/sei-htmlephants/react-ecommerce-client)
 - [Heroku Hosted API](https://thawing-beach-03969.herokuapp.com/)
+- [Sample cURL Scripts](./sample_curl.md)
 
 ## Development Plan
 
-// edit here 
+This project was planned using Jira. MVP user stories were established and given story points. We completed stories in daily sprints using Scrum.
 
-Jira, scrum, github, agile
-collaborative programming projects. 
+Each team-member worked off git feature branches, and pushed to the dev branch on feature completion. Changes were reviewed and pulled up to the main branch before deployment.
 
-The data is stored in a document database (MongoDB). GraphQL relationships and SQL table joins were not needed, therefore prioritizing developer experience was paramount and for that reason MongoDB was chosen. 
-
-Issue documents have subdocuments called comments. Anyone can attach a subdocument to anyone else's issue. Issue documents also have special 'enums' called tags. These are a limited set of strings that catagorize issues. These are used to create the Kanban board view on the front end. 
-
-Only owners of issues and comments can edit or delete their respective creations. 
+The data is stored in a document database (MongoDB) due to it's relative simplicity. The back-end routes and schemas are viewable here.
 
 ## User Stories
 
 - A user should be able to login/signup
-- A user should be able to purchase a product. 
-- A user should be able to see all their purchases. 
-- A admin user should be able to add images/code to a comment.
-- A admin user should be able to create a product.  
+- A user should be able to purchase a product.
+- A user should be able to see all their purchases.
+- A user should be able to update/delete their purchases.
+- An admin should be able to create a product.
+- An admin should be able to update/delete products.
 
 ## Technologies Used
 
-#### Front-End
+### Front-End
 
 - React
 - HTML/CSS/Javascript
 - Bootstrap
 
-#### Back-End
+### Back-End
 
 - Node.js
-  - Express
+- Express
 - MongoDB
-  - Mongoose
-  - MongoDB Atlas
+- Mongoose
+- MongoDB Atlas
+- Heroku
 
 ## Future Development
 
-- edit here
+- User image upload forum with likes
+- Product image uploads with `multer`
+- Comments/Ratings on products
+- Comments on purchases (for customer support)
 
 ## Entity Relationship Diagram
 
